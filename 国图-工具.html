@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://contents.applinzi.com/GTtool/gttool.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>国图-工具</title>
+    <script>
+        //-----------------------------------------------------------------------------//
+
+        window.onload = function() {
+
+        }
+
+        var index;
+        var get = function() {
+            var contain = $("container");
+            var con = $("con");
+            contain.removeChild(con);
+            con = c("div");
+            con.id = "con";
+            contain.appendChild(con);
+            index = 0;
+            setTimeout(appendA, 10);
+        }
+
+        var appendA = function() {
+            if (++index <= Page) {
+                var con = $("con");
+                var a = c("a");
+                a.className = "alink";
+                a.href = Url + index;
+                a.download = "" + index + "." + Fix;
+                a.target = "_blank";
+                a.innerHTML = index + "." + Fix;
+                a.onclick = function() {
+                    this.style.color = "purple";
+                }
+                con.appendChild(a);
+                setTimeout(appendA, 10);
+            }
+        }
+
+        var $ = function(str) {
+            return document.getElementById(str);
+        }
+
+        var c = function(str) {
+            return document.createElement(str);
+        }
+
+        var Url;
+        var Page;
+        var Fix;
+        var search = function() {
+            var u = $("url");
+            var p = $("pages");
+            var f = $("fix");
+
+            if (u.value === "" || p.value === "" || f.value === "")
+                return;
+
+            try {
+                Page = parseInt(p.value);
+            } catch (e) {
+                alert("页数错误!");
+                return;
+            }
+
+            Url = u.value;
+            Fix = f.value;
+            Url = Url.substring(0, Url.lastIndexOf("/") + 1);
+
+            get();
+        }
+
+        //----------------------------------------------------------------------------------------------//
+    </script>
+
+    <style>
+        body {
+            margin: 0px;
+            font-family: "等线", "微软雅黑", "黑体";
+            background-color: #fcfcfc;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        h1.header {
+            cursor: default;
+            font-size: 34px;
+            overflow: hidden;
+            padding: 10px;
+            font-weight: 400;
+            color: white;
+            text-align: center;
+        }
+        
+        #header {
+            padding-bottom: 2px;
+            padding-top: 2px;
+            background-color: #3C7BBE;
+        }
+        
+        #container {
+            text-align: center;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 5px;
+            margin-bottom: 45px;
+            padding: 2px;
+            -moz-user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        #ctrl {
+            font-size: 18px;
+            text-align: center;
+            background-color: #f8f8f8;
+            overflow: hidden;
+            margin-top: 4px;
+            box-shadow: 0px 2px 3px grey;
+            padding: 15px;
+        }
+        
+        .input {
+            height: 32px;
+            margin: 2px;
+            padding-left: 5px;
+            margin-right: 5px;
+            border: 0px solid gray;
+            background-color: rgba(32, 32, 32, 0.1);
+            border-radius: 6px;
+        }
+        
+        #url {
+            width: 40%;
+        }
+        
+        #pages {
+            font-size: 18px;
+            width: 8%;
+        }
+        
+        #fix {
+            font-size: 18px;
+            width: 8%;
+        }
+        
+        #btn {
+            font-family: "等线", "微软雅黑", "黑体";
+            font-size: 18px;
+            font-weight: bold;
+            width: 10%;
+            cursor: pointer;
+            background-color: #e0e0e0;
+        }
+        
+        #btn:hover {
+            background-color: #ececec;
+        }
+        
+        #btn:active {
+            background-color: #f8f8f8;
+        }
+        
+        h1.info {
+            font-size: 18px;
+            text-align: center;
+            margin: 5px;
+            cursor: default;
+        }
+        
+        a.label {
+            font-weight: bold;
+        }
+        
+        a.alink {
+            display: inline-block;
+            width: 8%;
+            padding: 0.5%;
+            margin: 0.5%;
+            overflow: hidden;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+        
+		a.alink:hover {
+            background-color: #f8f8f8;
+        }
+        
+        #con {
+            text-align: left;
+            margin: 5px;
+        }
+        
+        #help {
+            clear: both;
+            display: inline-block;
+            font-size: 20px;
+            padding: 5px;
+            font-weight: bold;
+            width: 22px;
+            background-color: rgba(32, 32, 32, 0.1);
+            border: 0px solid gray;
+            border-radius: 15px;
+            text-decoration: none;
+        }
+        
+        #help:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1 class="header">国图下载工具</h1>
+    </div>
+
+    <div id="ctrl">
+        <div class="url">
+            <a class="label">地址</a>
+            <input type="text" id="url" class="input" value="">
+            <a class="label">页数</a>
+            <input type="number" id="pages" class="input" value="">
+            <a class="label">后缀</a>
+            <input type="text" id="fix" class="input" value="pdf">
+            <input type="button" id="btn" class="input" onclick="search()" value="生成">            
+        </div>
+    </div>    
+    <div id="container">
+        <div id="con">
+        </div>
+    </div>
+
+
+</body></html>

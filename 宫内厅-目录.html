@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://contents.applinzi.com/GSZS/Content.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>宫内厅-目录</title>
+
+    <style>
+      body {
+            margin: 0px;
+            font-family: "等线", "微软雅黑","黑体";
+            background-color: #fcfcfc;
+        }
+        
+        h1.header {
+            cursor: default;
+            font-size: 34px;
+            overflow: hidden;
+            padding: 10px;
+            font-weight: 400;
+            color: white;
+            text-align: center;
+        }
+        
+        #header {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            padding-bottom: 2px;
+            padding-top: 2px;
+            background-color: #3C7BBE;
+        }
+        
+        #container {
+            text-align: center;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 15px;
+            margin-bottom: 45px;
+            padding: 2px;
+            min-height: 600px;
+            border: 1px solid gray;
+        }
+        
+        
+        table {
+            font-size: 18px;
+            text-align: left;
+        }
+        
+        td {
+            overflow: hidden;
+            border: 1px solid #cfcfcf;
+            background-color: #f8f8f8;
+        }
+        
+        td.tbltd7 {
+            width: 61%;
+        }
+        
+        td.tbltd5 {
+            width: 10%;
+        }
+    </style>
+
+    <script>
+        var book = [
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 579, 5, 1, 1, 8, 1, 20, 1, 2,
+            1, 2, 2, 1, 1, 2, 1, 3, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 2, 4, 1, 15, 18, 3, 9, 1,
+            2, 2, 1, 1, 3, 1, 1, 7, 1, 1,
+            1, 6, 1, 5
+        ];
+
+
+        window.onload = function() {
+
+            var imgrp = document.getElementsByName("imgrp");
+            for (var i = 0; i < imgrp.length; i++) {
+                //imgrp[i].parentNode.style.display = "none";
+            }
+
+            var alink = document.getElementsByClassName("a01");
+            var e, link, bk;
+            bk = 0;
+            for (var i = 0; i < alink.length; i++) {
+                e = alink[i];
+                link = e.href;
+                if (link.indexOf("id=") != -1) {
+                    link = link.substring(link.indexOf("=") + 1);
+                    link = "全文影像";
+                } else {
+                    e.target = "_blank";
+                    e.index=bk+1;
+                    e.id = link.substring(link.indexOf("=") + 1);
+                    e.href = "./GSZS.html?" + e.id + ";" + book[bk++]+ ";"+e.index;
+                    link = "下载";
+                }
+
+                e.innerHTML = link;
+                e.id = link;
+            }
+
+            var trs = document.getElementsByTagName("tr");
+            var x;
+            for (var i = 0; i < trs.length; i++) {
+                x = trs[i].insertCell(0);
+                if (i === 0)
+                    x.innerHTML = "<b>序号</b>";
+                else
+                    x.innerHTML = i;
+
+                x.className = "tbltd5";
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <h1 class="header">宫内厅书陵部-子部-释家-目录</h1>
+    </div>
+    
+    <div id="container">
+        <table class="style">
+            <tbody><tr>
+                <td class="tbltd5"><b>序号</b></td><td class="tbltd7"><b>经名</b></td>
+                <td class="tbltd5"> <b>册数</b> </td>
+                <td class="tbltd5"><b>下载</b> </td>
+                <td class="tbltd5"> <b>影像</b> </td>
+            </tr>
+            <tr>
+                <td class="tbltd5">1</td><td max-width="800" class="tbltd7">
+                    <span class="b01">中阿鋡經</span><span class="m01">(尾題)</span><span class="b02">[60]卷 存卷56 首闕 [晉釋瞿曇僧伽提婆]譯 天平寶字6年寫(光覺令寫)</span>
+                </td>
+                <td width="60" class="tbltd5">
+                    <span class="b01">1軸</span>
+                </td>
+                <td width="105" class="tbltd5">
+                    <a href="http://contents.applinzi.com/GSZS/GSZS.html?007537;1;1" class="a01" name="imgrp" target="_blank" id="下载">下载</a>
+                </td>
+                <td width="105" class="tbltd5">
+                    <a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007537" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="tbltd5">2</td><td max-width="800" class="tbltd7"><span class="b01">十支居士八城人經1卷 [漢釋安世高]譯 天平寶字4年冩(城上連人足)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007501;1;2" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007501" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">3</td><td max-width="800" class="tbltd7"><span class="b01">大乘悲分陁利經[8]卷 存卷3 闕名譯 [平安]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007571;1;3" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007571" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">4</td><td max-width="800" class="tbltd7"><span class="b01">大乗本生心地觀經8卷 存卷8 [唐釋般若]譯 [平安]寫(傳[小野道風]筆)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007718;1;4" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007718" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">5</td><td max-width="800" class="tbltd7"><span class="b01">佛本行集經[60]卷 存巻59 婆提唎迦等因縁品之三至摩尼婁陁品苐五十九 [隋]釋闍那崛多譯 [奈良後期]冩([尾張]宮成)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007539;1;5" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007539" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">6</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經[600]卷 存卷350 初分相引攝品苐六十之二 [唐]釋玄奘奉詔譯 [奈良]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007512;1;6" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007512" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">7</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經[600]卷 存卷355 初分多問不二品苐六十一之五 [唐]釋玄奘奉詔譯 天平勝寶6年寫(錦織麻呂)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007513;1;7" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007513" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">8</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅密多經[600]卷 存卷575 苐七曼殊室利分之二 [唐]釋玄奘奉詔譯 [奈良]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007542;1;8" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007542" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">9</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經</span><span class="m01">(尾題)</span><span class="b02">[600]卷 存卷3 [初分學觀品第二之一] 首闕 [唐釋玄奘奉詔]譯 [唐]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007577;1;9" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007577" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">10</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經</span><span class="m01">(尾題)</span><span class="b02">[600]卷 存卷412 苐二分[六到彼岸品第十三之二至]乗大乗品苐十四 首闕 [唐釋玄奘奉詔]譯 [奈良]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007578;1;10" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007578" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">11</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經[600]卷 存卷244 初分難信解品苐卅四之六十三 [唐]釋玄奘奉詔譯 和銅5年寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007714;1;11" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007714" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">12</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經600卷 附釋音 闕卷1 280至282 301至302 330 383至384 386 511至513 581至587 600 唐釋玄奘奉詔譯 (卷1至12)宋嘉定[9]至紹定2年刊(釋了懃等)(卷13以下)同3至[淳煕2年]刊(趙安國等施 平江府磧[砂]延聖院)[後印]</span></td>
+                <td width="60" class="tbltd5"><span class="b01">579帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?023001;579;12" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=023001" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">13</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經[600]卷 存卷493 496至497 540 578 唐釋玄奘奉詔譯 [紹定3至淳煕2年]刊(趙安國施[平江府磧砂延聖院])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">5帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?024640;5;13" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=024640" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">14</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經[600]卷 存卷366 唐釋玄奘奉詔譯 [宋]刊[修]</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?054131;1;14" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=054131" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">15</td><td max-width="800" class="tbltd7"><span class="b01">摩訶般若波羅蜜多心經</span><span class="m01">(尾題般若心經)</span><span class="b02">1卷 妙法蓮華經如来壽量品第十六1卷 (般)[唐釋玄奘奉詔]譯(法)[後秦釋鳩摩羅什]譯 [平安末]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007705;1;15" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007705" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">16</td><td max-width="800" class="tbltd7"><span class="b01">妙法蓮華經8卷 [姚秦釋鳩摩羅什]譯 [奈良]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">8軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007391;8;16" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007391" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">17</td><td max-width="800" class="tbltd7"><span class="b01">妙法蓮華經 存卷5 提婆達多品苐十二首 [姚秦釋鳩摩羅什]譯 [平安]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007704;1;17" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007704" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">18</td><td max-width="800" class="tbltd7"><span class="b01">大方廣佛華嚴經80卷 附入不思議解脫境界普賢行願品1卷 [唐]釋實叉難陀譯(附)釋般若譯 宋紹興12年跋刊(紹興府華嚴會)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">20帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007418;20;18" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007418" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">19</td><td max-width="800" class="tbltd7"><span class="b01">大方廣佛花嚴經[80]卷 存卷16 [唐釋実叉難陀]譯 [奈良後期]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007548;1;19" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007548" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">20</td><td max-width="800" class="tbltd7"><span class="b01">大方廣佛花嚴經[80]卷 存卷19 22 [唐釋實叉難陀]譯 [奈良後期]寫(大坂[廣川]等)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">2軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007559;2;20" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007559" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">21</td><td max-width="800" class="tbltd7"><span class="b01">大方廣佛華嚴經[40]卷 存卷40(尾題大方廣佛華嚴經行願品) [唐釋般若]譯 壽永2年寫(比丘尼心覺)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007720;1;21" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007720" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">22</td><td max-width="800" class="tbltd7"><span class="b01">須頼經</span><span class="m01">(尾題)</span><span class="b02">1卷 首闕 [前涼釋支施崘]譯 天平12年冩(藤原光明子令寫)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1帖 附1通</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007715;2;22" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007715" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">23</td><td max-width="800" class="tbltd7"><span class="b01">無言童子經2卷 [晉釋竺]法護譯 天平12年寫(藤原光明子令寫)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">2軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007585;2;23" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007585" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">24</td><td max-width="800" class="tbltd7"><span class="b01">持人菩薩經[4]卷 存卷2 持施王品苐四至十二縁品第八 [西晉釋竺法護]譯 [奈良]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007724;1;24" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007724" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">25</td><td max-width="800" class="tbltd7"><span class="b01">佛説阿難四事經1卷 [呉釋支謙]譯 [奈良]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007541;1;25" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007541" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">26</td><td max-width="800" class="tbltd7"><span class="b01">金光明最勝王經[10]卷 存卷6 四天王護國品第十二 卷9 善生王品苐廿一至長者子流水品苐廿五 [唐]釋義淨奉制譯 [平安]冩(寄合書 紺紙金泥)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">2軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007706;2;26" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007706" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">27</td><td max-width="800" class="tbltd7"><span class="b01">本事經[7]卷 存卷2 一法品第一之二 [唐]釋玄奘奉詔譯 [奈良後期]冩([大宅童子])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007572;1;27" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007572" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">28</td><td max-width="800" class="tbltd7"><span class="b01">金剛頂一切如来真實攝大乗現證大教王經3卷 [唐]釋不空奉詔譯 [平安初]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">3軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007560;3;28" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007560" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">29</td><td max-width="800" class="tbltd7"><span class="b01">菩提塲所説一字頂輪王經[5]卷 存卷1 序品第一 [唐]釋不空奉詔譯 [平安前期]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007717;1;29" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007717" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">30</td><td max-width="800" class="tbltd7"><span class="b01">佛說廻向輪經1卷 [唐]釋尸羅達摩譯 [平安末鎌倉初]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007574;1;30" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007574" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">31</td><td max-width="800" class="tbltd7"><span class="b01">不空羂索神呪心經1卷 唐釋玄奘譯 [奈良]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?047913;1;31" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=047913" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">32</td><td max-width="800" class="tbltd7"><span class="b01">[末]</span><span class="m01">(未)</span><span class="b02">利支提婆華鬘經1卷 [唐]釋不空譯 [平安末]冩(寄合書)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007575;1;32" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007575" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">33</td><td max-width="800" class="tbltd7"><span class="b01">摩訶僧祇律[40]卷 存卷22 [東晉釋佛陀跋陀羅 法顯]譯 [平安]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007702;1;33" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007702" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">34</td><td max-width="800" class="tbltd7"><span class="b01">根本說一切有部毗柰[耶]雜事[40]卷 存卷21 唐義淨奉制譯 [平安]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007536;1;34" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007536" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">35</td><td max-width="800" class="tbltd7"><span class="b01">根本說一切有部苾蒭尼毗柰耶[20]卷 存卷14 唐釋義浄奉[制]譯 天平12年寫(藤原光明子令寫)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007546;1;35" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007546" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">36</td><td max-width="800" class="tbltd7"><span class="b01">[大智度論100]卷 存卷[64 釋無作實相品第四十三] 首尾闕 [姚秦釋鳩摩羅什]譯 [奈良]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007552;1;36" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007552" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">37</td><td max-width="800" class="tbltd7"><span class="b01">[舎利弗阿毘曇論22]卷 存1卷 [非問分道品第十] 首尾闕 [後秦釋曇摩耶舍 釋曇摩崛多等]譯 [平安]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007562;1;37" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007562" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">38</td><td max-width="800" class="tbltd7"><span class="b01">瑜伽師地論[100]卷 存卷5 夲地分中有尋有伺等三地之二 唐釋玄奘譯 [奈良]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007502;1;38" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007502" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">39</td><td max-width="800" class="tbltd7"><span class="b01">瑜伽師地論[100]卷 存卷8 本地分中有尋有伺等三地之五 [唐]釋玄奘奉詔譯 神護景雲元年寫(行信願經)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007521;1;39" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007521" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">40</td><td max-width="800" class="tbltd7"><span class="b01">菩薩善戒經[9]卷 存卷2 菩薩地利益内外品苐四至菩薩地真實義品苐五 [劉宋釋求那跋摩]譯 [奈良後期]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007550;1;40" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007550" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">41</td><td max-width="800" class="tbltd7"><span class="b01">勝鬘寶屈</span><span class="m01">(尾題)</span><span class="b02"> 存卷上 [隋釋吉藏]撰 [平安]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007509;1;41" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007509" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">42</td><td max-width="800" class="tbltd7"><span class="b01">四種相違疏本文</span><span class="m01">(尾題)</span><span class="b02"></span><span class="m01">(因明入正理論疏卷下)</span><span class="b02">1卷 首闕 [唐釋基]撰 [平安末]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007543;1;42" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007543" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">43</td><td max-width="800" class="tbltd7"><span class="b01">楞伽阿跋多羅寳經</span><span class="m01">(尾題註楞伽經)</span><span class="b02">[7]卷 存卷3 5 一切佛語心品 [劉宋釋求那跋陀羅]譯釋智嚴注 天平12年寫(藤原光明子令寫)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">2軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007611;2;43" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007611" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">44</td><td max-width="800" class="tbltd7"><span class="b01">大般若波羅蜜多經關法</span><span class="m01">(題簽大般若經關法)</span><span class="b02">6卷 宋釋永隆 釋大隱撰 宋淳煕7年刊四明鄞縣太原沃承璋等</span></td>
+                <td width="60" class="tbltd5"><span class="b01">3帖 附1帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007388;4;44" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007388" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">45</td><td max-width="800" class="tbltd7"><span class="b01">四分律[音義]1卷 附[釋義] [唐釋玄應]撰(附)日本闕名撰 [平安初]寫</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007505;1;45" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007505" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">46</td><td max-width="800" class="tbltd7"><span class="b01">五燈會元20卷 闕卷1 5 8至9 宋釋[大川普濟]撰 [宋寶祐元年序]刊([浙])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">15册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007377;15;46" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007377" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">47</td><td max-width="800" class="tbltd7"><span class="b01">五燈會元20卷 闕卷8至9 宋釋[大川普濟]撰 [宋寶祐元年序]刊([浙])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">18册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007411;18;47" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007411" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">48</td><td max-width="800" class="tbltd7"><span class="b01">正法眼蔵3卷 宋[大慧宗杲](妙喜)撰 [南宋前期]刊</span></td>
+                <td width="60" class="tbltd5"><span class="b01">3册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007338;3;48" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007338" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">49</td><td max-width="800" class="tbltd7"><span class="b01">古尊宿語録</span><span class="m01">(序題)</span><span class="b02">4策 闕第3策 續開古尊宿語要6集 宋釋賾藏主編(續)釋晦室師明編 宋咸淳3年序刊</span></td>
+                <td width="60" class="tbltd5"><span class="b01">9册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007329;9;49" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007329" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">50</td><td max-width="800" class="tbltd7"><span class="b01">滁州琅瑘山覚和尚語録 琅邪和尚中後録各1卷 舒州白雲山海會演和尚語録</span><span class="m01">(尾題)</span><span class="b02">2卷 黃梅東山語録1卷 (琅語)宋釋琅瑘慧覺撰釋元聚編(琅中後)宋釋用孫等編(白)宋釋五祖法演撰釋[雲頂]才良等編(黃)同撰釋惟慶等編 (琅白)[江戸初]寫(黃)[宋末元初]刊</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007343;1;50" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007343" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">51</td><td max-width="800" class="tbltd7"><span class="b01">舒州龍門佛眼和尚語録</span><span class="m01">(序題佛眼禪師語録)</span><span class="b02">2卷 宋釋佛眼清遠撰宋釋[高庵]善悟編釋[竹庵]士珪校 [南宋]刊[修]</span></td>
+                <td width="60" class="tbltd5"><span class="b01">2册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007334;2;51" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007334" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">52</td><td max-width="800" class="tbltd7"><span class="b01">佛海禪師語録</span><span class="m01">(尾題)</span><span class="b02">□卷 附靈隠佛海禪師入内陞座録1卷 存下 宋釋瞎堂[慧遠]撰釋祖淳等編釋[連雲]道能校 宋淳煕4年序刊([浙])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">2册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007331;2;52" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007331" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">53</td><td max-width="800" class="tbltd7"><span class="b01">北礀和尚語録1卷 宋釋[敬叟居簡]撰釋[物初]大觀編 [宋淳祐12年序]刊</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007382;1;53" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007382" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">54</td><td max-width="800" class="tbltd7"><span class="b01">北礀和尚外集1卷 附行状1卷 宋釋敬叟居簡撰釋[物初]大觀編(附)編者撰 [宋淳祐12年序]刊</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007384;1;54" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007384" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">55</td><td max-width="800" class="tbltd7"><span class="b01">佛鑑禪師語録</span><span class="m01">(尾題)</span><span class="b02">2卷 附徑山無準和尚入内引對陞座語録 徑山無準禪師行狀各1卷 宋釋無準師範撰釋宗會等編(入)釋了南等撰(行)釋無文[道]璨撰 宋淳祐11年刊(田興隆等施)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">3册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007325;3;55" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007325" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">56</td><td max-width="800" class="tbltd7"><span class="b01">石田和尚語録</span><span class="m01">(尾題石田薫和尚語録)</span><span class="b02">[2]卷 存上 宋釋石田[法]薫撰釋師坦等編 [宋淳祐7年](丁未)刊</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007322;1;56" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007322" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">57</td><td max-width="800" class="tbltd7"><span class="b01">東京慧林禪寺慈受深和尚陞堂頌古□卷 存上2卷 宋釋慈受[懷]深撰釋[垂慈]普紹編 [南宋]刊([浙])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007347;1;57" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007347" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">58</td><td max-width="800" class="tbltd7"><span class="b01">禪宗頌古聯珠通集10卷 闕卷3 5 8 宋釋法應編[元]釋[魯庵]普會續 [元]刊([浙])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">7册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007330;7;58" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007330" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">59</td><td max-width="800" class="tbltd7"><span class="b01">貞元新定釋教目録[30]卷 存卷12 唐[釋圓照等奉勑]撰 大治4年寫(釋隆暹)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007390;1;59" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007390" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">60</td><td max-width="800" class="tbltd7"><span class="b01">金園集3卷 宋釋遵式撰釋慧觀編 宋紹興11年刊([浙])</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1册</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?006904;1;60" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=006904" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">61</td><td max-width="800" class="tbltd7"><span class="b01">大乘布薩說戒1卷 (日本歟)闕名撰 [奈良末平安初]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?007286;1;61" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007286" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">62</td><td max-width="800" class="tbltd7"><span class="b01">景祐天竺字源7卷 闕卷7 宋釋惟浄等撰 [平安]冩</span></td>
+                <td width="60" class="tbltd5"><span class="b01">6軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?043737;6;62" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=043737" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">63</td><td max-width="800" class="tbltd7"><span class="b01">景祐天竺字源[抄]1卷 宋釋惟淨等原撰日本釋喜海編 嘉禄2年冩(自筆)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">1軸</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?043738;1;63" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=043738" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+            <tr>
+                <td class="tbltd5">64</td><td max-width="800" class="tbltd7"><span class="b01">一切經音義7帖(25巻) 闕苐2至3帖(巻3至8) 唐釋玄應撰 大治3年冩(釋覚嚴等)</span></td>
+                <td width="60" class="tbltd5"><span class="b01">5帖</span></td>
+                <td width="105" class="tbltd5"><a href="http://contents.applinzi.com/GSZS/GSZS.html?043740;5;64" class="a01" name="imgrp" target="_blank" id="下载">下载</a></td>
+                <td width="105" class="tbltd5"><a href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=043740" class="a01" name="alrp" target="_blank" id="全文影像">全文影像</a></td>
+            </tr>
+        </tbody></table>
+    </div>
+
+
+</body></html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://contents.applinzi.com/JXZ/jxztool.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>嘉兴藏-tool</title>
+
+    <script>
+        window.onload = function() {
+            initial();
+        }
+
+        var $ = function(x) {
+            return document.getElementById(x);
+        }
+
+        var $c = function(c) {
+            return document.getElementsByClassName(c);
+        }
+
+        var createE = function(e) {
+            return document.createElement(e);
+        }
+
+        //------------------------------------------------------------------------//
+        //------------------------------------------------------------------------//
+        //------------------------------------------------------------------------//
+
+        var initial = function() {
+            var can = $("infoCanvas");
+            can.height = can.width * 0.82;
+            isprocessing = false;
+
+            var dragdiv = $('float');
+            var x, y;
+
+            dragdiv.addEventListener('dragstart', function(e) {
+                e.dataTransfer.effectAllowed = "move"; //移动效果
+                e.dataTransfer.setData("text", ''); //附加数据，　没有这一项，firefox中无法移动
+                x = e.offsetX || e.layerX;
+                y = e.offsetY || e.layerY;
+                return true;
+            }, false);
+
+            document.addEventListener('dragover', function(e) { //取消冒泡 ,不取消则不能触发 drop事件
+                e.preventDefault() || e.stopPropagation();
+            }, false);
+
+            document.addEventListener('drop', function(e) {
+                dragdiv.style.left = (e.pageX - x) + 'px';
+                dragdiv.style.top = (e.pageY - y) + 'px';
+                e.preventDefault() || e.stopPropagation(); //不取消，firefox中会触发网页跳转到查找setData中的内容
+            }, false);
+        }
+
+        //------------------------------------------------------------------------//
+
+        var Url;
+        var Page;
+        var offset;
+        var search = function() {
+            var u = $("url");
+            var p = $("pages");
+
+            if (u.value === "" || p.value === "")
+                return;
+
+            try {
+                Page = parseInt(p.value);
+            } catch (e) {
+                alert("页数错误!");
+                return;
+            }
+
+            Url = u.value;
+            Url = Url.substring(0, Url.lastIndexOf("s_files"));
+            offset = Url.substring(Url.length - 4);
+            offset = parseInt(offset);
+            Url = Url.substring(0, Url.length - 4);
+            //http://dzkimgs.l.u-tokyo.ac.jp/kakouzou/104_3/0126s_files/8/0_0.jpg
+            clear(true);
+            clearInterval(fetchTimer);
+            clearInterval(checkTimer);
+            getImages();
+        }
+
+        //------------------------------------------------------------------------//
+        var adjNum = function(n, bit) {
+            var str = "";
+            for (var i = 1; i < bit; i++) {
+                str += "0";
+            }
+            str += n;
+            str = str.substring(str.length - bit);
+            return str;
+        }
+
+        var lastPicture = null;
+        var pictureCount = 0;
+        var isContentLoding;
+        var isprocessing;
+        var imageRows;
+        var imageCols = 5;
+        var getImages = function(m) {
+            isContentLoding = true;
+            var div = $("imgDiv");
+            var pdiv = $("pdiv");
+            div.removeChild(pdiv);
+            var d = createE("div");
+            d.id = "pdiv";
+            var imgUrl;
+            var divx;
+            imageRows = Math.ceil(Page / imageCols);
+            for (var i = 0; i < imageRows; i++) {
+                for (var j = 0; j < imageCols; j++) {
+                    var index = i * imageCols + j + 1;
+                    if (index > Page)
+                        break;
+                    index += offset - 1;
+                    var image = createE("img");
+                    divx = createE("div");
+                    divx.className = "divx";
+                    divx.innerHTML = index;
+                    image.className = "imgs";
+                    image.id = "image_" + index;
+                    imgUrl = Url + adjNum(index, 4) + "s_files/8/0_0.jpg";
+                    image.imageSource = imgUrl;
+                    image.hdimg = Url + adjNum(index, 4) + "s_files/13/";
+                    image.onclick = function() {
+                        if (isprocessing)
+                            return;
+                        if (this.naturalWidth != 0) {
+                            clickPicture(this);
+                        }
+                    }
+                    image.src = imgUrl;
+                    divx.appendChild(image);
+                    d.appendChild(divx);
+                }
+            }
+            div.appendChild(d);
+        }
+
+
+
+        var clickPicture = function(img) {
+            if (lastPicture != null)
+                lastPicture.parentNode.style.backgroundColor = "#004000";
+            img.parentNode.style.backgroundColor = "lime";
+            lastPicture = img;
+            clear(false);
+            clearInterval(fetchTimer);
+            clearInterval(checkTimer);
+            getColsRows(img.hdimg);
+        }
+
+        var fetchIndex;
+        var fetchTimer;
+        var checkTimer;
+        var testImgVols;
+        var side = 30;
+        var getColsRows = function(purl) {
+            fetchIndex = side;
+            Surl = purl;
+            testImgVols = new Array(2 * side);
+            fetchTimer = setInterval(function() {
+                getOnePic(purl);
+            }, 15);
+        }
+
+        var getOnePic = function(purl) {
+            --fetchIndex;
+            var url1, url2;
+
+            if (fetchIndex >= 0) {
+                url1 = purl + fetchIndex + "_" + 0 + ".jpg";
+                url2 = purl + 0 + "_" + fetchIndex + ".jpg";
+            } else {
+                clearInterval(fetchTimer);
+                checkTimer = setInterval(function() {
+                    checkLoading();
+                }, 50);
+                return;
+            }
+
+            var image_x = createE("img");
+            var image_y = createE("img");
+            image_x.index = fetchIndex;
+            image_y.index = side + fetchIndex;
+            image_x.id = "image_" + fetchIndex;
+            image_y.id = "image_" + (side + fetchIndex);
+            image_x.onload = function() {
+                if (this.naturalWidth != 0)
+                    testImgVols[this.index].isload = true;
+            }
+            image_y.onload = function() {
+                if (this.naturalWidth != 0)
+                    testImgVols[this.index].isload = true;
+            }
+            testImgVols[fetchIndex] = {
+                img: image_x,
+                isload: false
+            };
+            testImgVols[side + fetchIndex] = {
+                img: image_y,
+                isload: false
+            };
+            image_x.src = url1;
+            image_y.src = url2;
+        }
+
+        var checkLoading = function() {
+            var flag1 = false;
+            var flag2 = false;
+            var r, c;
+
+            showLoadInfo(side, 2, testImgVols);
+            var list = testImgVols;
+
+            for (var i = 2 * side; i > side; i--) {
+                if (list[i - 1].isload) {
+                    flag1 = true;
+                    break;
+                }
+            }
+            r = i - side;
+            for (; i > side; i--) {
+                if (!list[i - 1].isload) {
+                    flag1 = false;
+                    break;
+                }
+            }
+
+            for (var j = side; j > 0; j--) {
+                if (list[j - 1].isload) {
+                    flag2 = true;
+                    break;
+                }
+            }
+            c = j;
+            for (; j > 0; j--) {
+                if (!list[j - 1].isload) {
+                    flag2 = false;
+                    break;
+                }
+            }
+
+            if (flag1 && flag2) {
+                sImgRows = r;
+                sImgCols = c;
+                clearInterval(checkTimer);
+                // var str = "C:" + sImgCols + "<br>";
+                // str += "R:" + sImgRows + "<br>";
+                // $("showInfo").innerHTML = str;
+                //testImgVols = null;
+                getSplitImgs();
+            }
+        }
+
+        var showLoadInfo = function(cols, rows, list) {
+            var can = $("infoCanvas");
+            var ctx = can.getContext("2d");
+            var w = can.width / cols;
+            ctx.clearRect(0, 0, can.width, can.height);
+
+            var i, j, index;
+            for (i = 0; i < rows; i++) {
+                for (j = 0; j < cols; j++) {
+                    index = i * cols + j;
+                    if (list[index].isload)
+                        ctx.fillStyle = "#40ff40";
+                    else
+                        ctx.fillStyle = "#004000";
+
+                    ctx.fillRect(j * w, i * w + 10, w - 3, w - 3);
+                }
+            }
+        }
+
+        var sImgRows;
+        var sImgCols;
+        var spiltImgVols;
+        var Surl;
+        var getSplitImgs = function(str) {
+            fetchIndex = 0;
+            spiltImgVols = new Array(sImgRows * sImgCols);
+            fetchTimer = setInterval(function() {
+                fetch();
+            }, 2);
+        }
+
+        var fetch = function() {
+            if (fetchIndex < sImgRows * sImgCols) {
+                var k = fetchIndex + 1;
+                var i = fetchIndex % sImgCols;
+                var j = Math.floor(fetchIndex / sImgCols);
+                var imgUrl = Surl + i + "_" + j + ".jpg";
+                var image = createE("img");
+                image.index = fetchIndex;
+                image.onload = function() {
+                    if (this.naturalWidth != 0)
+                        spiltImgVols[this.index].isload = true;
+                }
+                spiltImgVols[fetchIndex] = {
+                    img: image,
+                    isload: false
+                };
+                image.src = imgUrl;
+                ++fetchIndex;
+                return;
+            }
+            clearInterval(fetchTimer);
+            checkTimer = setInterval(function() {
+                checkSpiltPicLoad();
+            }, 50);
+        }
+
+        var checkSpiltPicLoad = function() {
+            var flag = true;
+            for (var i = 0; i < spiltImgVols.length; i++) {
+                if (!spiltImgVols[i].isload) {
+                    flag = false;
+                    break;
+                }
+            }
+            showLoadInfo(sImgCols, sImgRows, spiltImgVols);
+            if (flag) {
+                clearInterval(checkTimer);
+                combine();
+            }
+        }
+
+        var combine = function() {
+            isprocessing = true;
+
+            var vol = $("canvasDiv");
+            var canvas = $("canvas");
+            vol.removeChild(canvas);
+            canvas = null;
+
+            var can = createE("canvas");
+            can.id = "canvas";
+            var context = can.getContext("2d");
+
+            //alert("combine");
+            var natrW = 0;
+            var natrH = 0;
+            var imageObj;
+            var index;
+
+            for (var i = 0; i < sImgCols; i++) {
+                imageObj = spiltImgVols[i].img;
+                if (imageObj.naturalWidth != 0) {
+                    natrW += imageObj.naturalWidth;
+                }
+            }
+
+            for (var j = 0; j < sImgRows; j++) {
+                index = j * sImgCols;
+                imageObj = spiltImgVols[index].img;
+                if (imageObj.naturalHeight != 0) {
+                    natrH += imageObj.naturalHeight;
+                }
+            }
+
+            can.width = natrW;
+            can.height = natrH;
+
+            var W = 0;
+            var H = 0;
+            for (var i = 0; i < sImgRows; i++) {
+                W = 0;
+                for (j = 0; j < sImgCols; j++) {
+                    index = i * sImgCols + j;
+                    imageObj = spiltImgVols[index].img;
+                    context.drawImage(imageObj, W, H);
+                    W += imageObj.naturalWidth;
+                }
+                H += imageObj.naturalHeight;
+            }
+
+            vol.appendChild(can);
+            isprocessing = false;
+        }
+
+        var clear = function(strict) {
+            $("canvas").width = 0;
+            $("canvas").height = 0;
+            testImgVols = null;
+            spiltImgVols = null;
+
+            if (!strict) return;
+            var can = $("infoCanvas");
+            can.getContext("2d").clearRect(0, 0, can.width, can.height);
+        }
+    </script>
+    <style>
+        body {
+            margin: 0px;
+            font-family: "等线", "微软雅黑", "黑体";
+            background-color: #fcfcfc;
+        }
+        
+        h1.header {
+            cursor: default;
+            font-size: 34px;
+            overflow: hidden;
+            padding: 10px;
+            font-weight: 400;
+            color: white;
+            text-align: center;
+        }
+        
+        #header {
+            padding-bottom: 2px;
+            padding-top: 2px;
+            background-color: #3C7BBE;
+        }
+        
+        #container {
+            text-align: center;
+            width: 98%;
+            margin: 0 auto;
+            margin-top: 15px;
+            margin-bottom: 45px;
+            padding: 2px;
+            overflow: auto;
+        }
+        /*=======================================================================*/
+        
+        #ctrl {
+            font-size: 18px;
+            text-align: center;
+            background-color: #f8f8f8;
+            overflow: hidden;
+            margin-top: 4px;
+            box-shadow: 0px 2px 3px grey;
+            padding: 15px;
+        }
+        
+        .input {
+            height: 32px;
+            margin: 2px;
+            padding-left: 5px;
+            margin-right: 5px;
+            border: 0px solid gray;
+            background-color: rgba(32, 32, 32, 0.1);
+            border-radius: 6px;
+        }
+        
+        #url {
+            width: 45%;
+        }
+        
+        #pages {
+            font-size: 18px;
+            width: 8%;
+        }
+        
+        #fix {
+            font-size: 18px;
+            width: 8%;
+        }
+        
+        #btn {
+            font-family: "等线", "微软雅黑", "黑体";
+            font-size: 18px;
+            font-weight: bold;
+            width: 10%;
+            cursor: pointer;
+            background-color: #e0e0e0;
+        }
+        
+        #btn:hover {
+            background-color: #ececec;
+        }
+        
+        #btn:active {
+            background-color: #f8f8f8;
+        }
+        
+        h1.info {
+            font-size: 18px;
+            text-align: center;
+            margin: 5px;
+            cursor: default;
+        }
+        
+        a.label {
+            font-weight: bold;
+        }
+        
+        #center {
+            margin: 0 auto;
+            width: 96%;
+            /*background-color: pink;*/
+        }
+        
+        #float {
+            position: absolute;
+            z-index: 1;
+            left: 10px;
+            top: 200px;
+            opacity: 0.8;
+            width: 200px;
+            cursor: pointer;
+            font-style: normal;
+        }
+        /*=======================================================================*/
+        /*===============================   center  ========================================*/
+        
+        #imgDiv {
+            width: 100%;
+            text-align: center;
+            border-radius: 6px;
+            background-color: #f0f0f0;
+            height: 500px;
+            overflow: auto;
+        }
+        
+        #canvasDiv {
+            width: 100%;
+            border-radius: 6px;
+            background-color: #f0f0f0;
+            margin-top: 10px;
+            min-height: 450px;
+            overflow: auto;
+        }
+        
+        div.divx {
+            float: left;
+            text-align: center;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            width: 19%;
+            padding: 0.5%;
+        }
+        
+        img.imgs {
+            background-color: #f0f0f0;
+            cursor: pointer;
+            width: 100%;
+            margin: 0.5%;
+        }
+        
+        img.imgs:hover {
+            /*opacity: 0.75;*/
+        }
+        
+        canvas {
+            width: 98%;
+            margin: 0 auto;
+            margin: 1%;
+            /*background-color: lightgrey;*/
+        }
+        /*===============================right========================================*/
+        
+        #logo {
+            width: 100%;
+            float: left;
+            display: none;
+        }
+        
+        div.divs {
+            text-align: left;
+            width: 100%;
+            min-height: 30px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            background-color: #f0f0f0;
+        }
+        
+        div.divs:hover {
+            background-color: #f8f8f8;
+        }
+        
+        #infoCanvas {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: #000;
+        }
+        
+        p.info {
+            cursor: default;
+            text-align: left;
+            padding: 5px;
+            font-size: 16px;
+            margin: 0px;
+        }
+        
+        a.downlink {
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            padding: 4px;
+            color: green;
+        }
+        
+        a.JXZlink {
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            padding: 3px;
+            margin-top: 5px;
+            padding-top: 5px;
+            color: purple;
+        }
+        /*=======================================================================*/
+    </style>
+
+</head>
+
+<body>
+    <div id="header">
+        <h1 class="header">嘉兴藏下载工具</h1>
+    </div>
+    <div id="ctrl">
+        <div class="url">
+            <a class="label">地址</a>
+            <input type="text" id="url" class="input" value="">
+            <a class="label">页数</a>
+            <input type="number" id="pages" class="input" value="">
+            <input type="button" id="btn" class="input" onclick="search()" value="生成">
+        </div>
+    </div>
+    <div id="container">
+        <div id="center">
+            <div id="imgDiv">
+                <div id="pdiv"></div>
+            </div>
+
+            <div id="canvasDiv">
+                <canvas id="canvas">
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="float" draggable="true">
+        <div class="divs">
+            <canvas id="infoCanvas" height="245"></canvas>
+        </div>
+    </div>
+
+
+</body></html>

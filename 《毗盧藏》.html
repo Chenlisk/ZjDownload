@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://contents.applinzi.com/PLZ/PLZ.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <title>《毗盧藏》</title>
+    <script>
+        //--------------------------------------------------------------------//        
+        var bookRange = 6265; //页码范围
+        var row = 25; //10 行
+        var col = 4; //4  列         
+        var bookIndex = 0; //起始页码
+        var fetchIndex;
+        var imgCount;
+        var book;
+        var fetchTimer;
+        var checkTimer;
+        //---------------------//
+        window.onload = function(val) {
+            page = "";
+            book = "";
+            $("bookInfo").innerHTML = "共 " + bold(bookRange) + " 册";
+        }
+
+        var $ = function(x) {
+            return document.getElementById(x);
+        }
+
+        var c = function(x) {
+            return document.createElement(x);
+        }
+
+        var bold = function(x) {
+            return "<b>" + x + "</b>";
+        }
+
+        var adjustPage = function(pindex) {
+            var page;
+            if (pindex < 10) {
+                page = "000" + pindex;
+            } else if (pindex < 100) {
+                page = "00" + pindex;
+            } else if (pindex < 1000) {
+                page = "0" + pindex;
+            }
+
+            return page;
+        }
+
+        var adjustBook = function() {
+            if (bookIndex < 10) {
+                book = "00" + bookIndex;
+            } else if (bookIndex < 100) {
+                book = "0" + bookIndex;
+            } else {
+                book = "" + bookIndex;
+            }
+
+            $("bookInfo").innerHTML = "第 " + setColor(bold(bookIndex), "#ff4444") + "/" + bold(bookRange) + " 册";
+        }
+
+        var setColor = function(str, color) {
+            return "<span style='color:" + color + ";'>" + str + "</span>";
+        }
+
+        var creatImageTable = function() {
+            var container = $("container");
+            var imgdiv = $("imgdiv");
+
+            container.removeChild(imgdiv);
+            imgdiv = c("div");
+            imgdiv.id = "imgdiv";
+
+            for (var i = 0; i < row; i++) {
+                for (var j = 0; j < col; j++) {
+                    var index = i * col + j + 1;
+                    var image = c("img");
+                    image.id = "image_" + index;
+                    image.alt = index;
+                    image.src = "";
+                    image.onclick = function() {
+                        mouseEvent(this);
+                    }
+                    imgdiv.appendChild(image);
+                }
+            }
+            container.appendChild(imgdiv);
+            setImageTable();
+        }
+
+        var setImageTable = function() {
+            fetchIndex = 0;
+            adjustBook();
+            fetchTimer = setInterval(function() {
+                fetch();
+            }, 5);
+        }
+
+        var fetch = function() {
+            if (fetchIndex !== row * col) {
+                var i = row * col - fetchIndex;
+                var page1 = adjustPage(i);
+                var path1 = "http://db.sido.keio.ac.jp/kanseki/flipping/007075-" + book + "/007075-";
+                path1 += book + "/assets/flash/pages/page" + page1 + "_l.jpg";
+                ++fetchIndex;
+                // var url2 = "H:/BUDDHISM/DZJ/SXZ.png";
+                // $("image_" + i).src = url2;
+                $("image_" + i).src = path1;
+                return;
+            }
+            TimerStop(fetchTimer);
+            TimerStart();
+        }
+
+        //--------------------------------------------------------------------------------------------------------//
+        var scaledImage = "";
+        var mouseEvent = function(e) {
+            var index = parseInt(e.id.substring(6));
+            var i = Math.floor((index - 1) / col) * col;
+            if (scaledImage === "") {
+                scale(i, index);
+                scaledImage = e.id;
+            } else if (scaledImage === e.id) {
+                scale(i, "");
+                scaledImage = "";
+            } else {
+                var lastIndex = parseInt(scaledImage.substring(6));
+                var k = Math.floor((lastIndex - 1) / col) * col;
+                scale(k, "");
+                scale(i, index);
+                scaledImage = e.id;
+            }
+
+            e.style.backgroundColor = "#00c000";
+        }
+
+        var scale = function(img, index) {
+            if (index === "") {
+                for (var i = 1; i <= 4; i++) {
+                    var image = $("image_" + (img + i));
+                    if (image == null)
+                        break;
+                    image.style.width = "24%";
+                }
+            } else {
+                for (var i = 1; i <= 4; i++) {
+                    var image = $("image_" + (img + i));
+                    if (image == null)
+                        break;
+                    image.style.width = "8%";
+                }
+                $("image_" + index).style.width = "72%";
+            }
+        }
+
+        var clickNext = function(val) {
+            if (bookIndex <= 1 && val === -1 || bookIndex >= bookRange && val === 1)
+                return;
+            if (bookIndex === 0 && val === 0)
+                return;
+
+            bookIndex += val;
+            adjustBook();
+            $("info").innerHTML = "";
+
+            reLoad = false;
+            creatImageTable();
+        }
+
+        var Jump = function() {
+            try {
+                var str = $("inputval").value;
+                var j = parseInt(str);
+
+                if (str === "") {
+                    return;
+                } else if (j <= 0 || j > bookRange) {
+                    alert("范围为（1-" + bookRange + "）");
+                    $("inputval").value = "";
+                    return;
+                }
+                bookIndex = j;
+                adjustBook();
+                $("info").innerHTML = "";
+                reLoad = false;
+                creatImageTable();
+            } catch (e) {
+                alert("Error!");
+            }
+            // $("inputval").value = "";
+        }
+
+        var TimerStart = function() {
+            if (checkTimer != null)
+                TimerStop(checkTimer);
+
+            checkTimer = setInterval(function() {
+                TimeOut();
+            }, 10);
+        }
+
+        var TimerStop = function(e) {
+            clearInterval(e);
+        }
+
+        var reLoad = false;
+        var TimeOut = function() {
+            if (checkLoadState()) {
+                for (var i = 0; i < row; i++) {
+                    for (var j = 0; j < col; j++) {
+                        var index = row * col - (i * col + j);
+                        var image = $("image_" + index);
+                        if (image.naturalWidth === 0 || image.naturalHeight === 0) {
+                            image.parentNode.removeChild(image);
+                        } else {
+                            TimerStop(checkTimer);
+
+                            if (reLoad === false) {
+                                creatImageTable();
+                                reLoad = true;
+                                return;
+                            }
+                            var str = "";
+                            str += "本页共<span style='color:red;'>" + bold(index) + "</span >张图片</b>";
+                            str += "<b>(Ctrl+S 另存为";
+                            str += "-<span style = 'font-size:14px;color:darkgreen;'>点击图片可预览</span>)";
+                            $("info").innerHTML = str;
+                            imgCount = index;
+                            return;
+                        }
+                    }
+                }
+            }
+            $("info").innerHTML = "图片加载中...";
+        }
+
+        var checkLoadState = function() {
+            var b = false;
+            for (var i = row * col; i > 0; i--) {
+                if ($("image_" + i).naturalWidth != 0) {
+                    b = true;
+                    break;
+                }
+            }
+
+            for (; i > 0; i--) {
+                if ($("image_" + i).naturalWidth === 0) {
+                    b = false;
+                }
+            }
+            return b;
+        }
+
+        //----------------------------------------------------------------------------------------------//
+    </script>
+
+    <style>
+        body {
+            margin: 0px;
+            font-family: "等线", "微软雅黑", "黑体";
+            background-color: #fcfcfc;
+        }
+        
+        h1.header {
+            cursor: default;
+            font-size: 34px;
+            overflow: hidden;
+            padding: 10px;
+            font-weight: 400;
+            color: white;
+            text-align: center;
+        }
+        
+        #header {
+            padding-bottom: 2px;
+            padding-top: 2px;
+            background-color: #3C7BBE;
+        }
+        
+        #container {
+            text-align: center;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 5px;
+            margin-bottom: 45px;
+            border-radius: 6px;
+            background-color: #f0f0f0;
+        }
+        
+        button {
+            width: 8%;
+            height: 35px;
+            overflow: hidden;            
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #e8e8e8;
+            border: 0px solid grey;
+            border-radius: 6px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-family: "等线", "微软雅黑", "黑体";
+        }
+        
+        button:hover {
+            background-color: #cccccc;
+        }
+        
+        button:active {
+            background-color: #888888;
+        }
+        
+        img {
+            width: 24%;
+            cursor: pointer;
+            padding: 2px;
+            margin: 1px;
+        }
+        
+        input {
+            height: 32px;
+            font-size: 18px;
+            background-color: #e8e8e8;
+            border: 0px solid gray;
+            font-family: "等线", "微软雅黑", "黑体";
+        }
+        
+        #inputval {
+            padding-left: 2%;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            width: 71%;
+        }
+        
+        #Jmp {
+            width: 25%;
+            cursor: pointer;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            background-color: #c8c8c8;
+        }
+        
+        h1.info {
+            text-align: center;
+            font-weight: normal;
+            margin: 5px;
+            font-size: 18px;
+            cursor: default;
+        }
+        
+        #ctrl {
+            text-align: center;
+            background-color: #fcfcfc;
+            height: 80px;
+            overflow: hidden;
+            margin-top: 4px;
+            box-shadow: 0px 2px 3px grey;
+            padding-bottom: 0px;
+        }
+        
+        a.help {
+            font-size: 16px;
+            display: block;
+            padding-left:20px;
+            padding-right:20px;            
+            text-decoration: none;            
+        }
+        
+        a.olink {
+            font-size: 16px;
+            display: block;
+            padding: 5px;    
+            padding-left:15px;
+            padding-right:15px;
+            cursor: pointer;
+            text-decoration: none;            
+        }
+        
+        a.olink:hover {
+            color: #88c;
+            background-color: #f8f8f8;
+        }
+        
+        #jumpDiv {
+            width: 30%;
+            background-color: #e8e8e8;
+            display: inline-block;
+            border-radius: 6px;
+            text-align: right;
+        }
+        
+        div.links {
+            clear: both;
+            display: inline-block;
+            font-weight: bold;
+            background-color: #e8e8e8;
+            /*height: 32px;
+            width: 32px;*/
+            cursor: default;
+            padding-top: 9px;
+            padding-bottom: 9px;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        ul.list {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #e8e8e8;
+            padding: 0px;
+            margin: 0px;
+            border-radius: 6px;
+            margin-top: 8px;
+        }
+        
+        li {
+            background-color: #efefef;
+            list-style: none;
+            border-radius: 6px;
+        }
+        
+        div.links:hover ul.list {
+            display: block;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1 class="header">《毗卢藏》下载</h1>
+    </div>
+
+    <div id="ctrl">
+        <h1 id="bookInfo" class="info">共 <b>6265</b> 册</h1>
+
+        <button onclick="clickNext(-1)"><b>上一册</b></button>
+        <div id="jumpDiv">
+            <input type="number" id="inputval" value="">
+            <input type="submit" id="Jmp" onclick="Jump()" value="检索">
+        </div> 
+        <button onclick="clickNext(1)"><b>下一册</b></button>
+        <div class="links" id="links">
+            <a class="help">帮助</a>
+            <ul class="list">
+                <li> <a class="olink" href="http://db.sido.keio.ac.jp/kanseki/T_bib_frame.php?id=007075" target="_blank">访问网站</a> </li>
+                <li> <a class="olink" href="http://contents.applinzi.com/PLZ/PLZ_lc.html" target="_blank">下载流程</a> </li>
+                <li> <a class="olink" href="http://contents.applinzi.com/PLZ/plz-jdlc.html" target="_blank">防错宝典</a> </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <h1 id="info" class="info"></h1>
+
+    <div id="container">
+        <div id="imgdiv">
+        </div>
+    </div>
+
+
+
+
+</body></html>

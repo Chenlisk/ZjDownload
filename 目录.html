@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://contents.applinzi.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>目录</title>
+    <script>
+        //--------------------------------------------------------------------------------//        
+        var content = [{
+            name: "毗卢藏",
+            url: "./PLZ/PLZ.html",
+            color:"",
+            display:"inline-block"
+        }, {
+            name: "嘉兴藏",
+            url: "./JXZ/JXZ2.html",            
+            color:"",
+            display:"inline-block"            
+        }, {
+            name: "宫内厅",
+            url: "./GSZS/Content.html",     
+            color:"",
+            display:"inline-block"
+        }, {
+            name: "国图佛经",
+            url: "./GTFJ/gtfj.html",        
+            color:"",
+            display:"inline-block"
+        }, {
+            name: "国图工具",
+            url: "./GTtool/gttool.html",         
+            color:"#22A841",
+            display:"inline-block"
+        }, {
+            name: "宫内厅工具",
+            url: "./GSZS/gntTool.html",         
+            color:"#22A841",
+            display:"inline-block"
+        }, {
+            name: "嘉兴藏工具",
+            url: "./JXZ/jxztool.html",     
+            color:"#22A841",
+            display:"inline-block"
+        }, {
+            name: "下载说明",
+            url: "./instruction.html",     
+            color:"#3399FF",
+            display:"inline-block"
+        }, {
+            name: "",
+            url: "",     
+            color:"",
+            display:"none"
+        }];
+
+        window.onload = function(val) {
+            initial();
+        }
+
+        var $ = function(x) {
+            return document.getElementById(x);
+        }
+
+        var initial = function() {
+            var container = $("container");
+            var d, b;
+            for (var i = 0; i < content.length; i++) {
+                b = content[i];
+                if (b.name === "")
+                    break;
+                addBlock(container, b);
+            }
+        }
+
+        var addBlock = function(f, obj) {
+            var d = document.createElement("div");
+            d.className = "vols";            
+            var a = document.createElement("a");
+            a.className = "alink";
+            a.href = obj.url;
+            a.target = "_blank";
+            if(obj.color != "")
+                d.style.backgroundColor = obj.color;
+            d.style.display = obj.display;
+            a.innerHTML = obj.name;
+            d.appendChild(a);
+            f.appendChild(d);
+        }
+
+        //----------------------------------------------------------------------------------------------//
+    </script>
+
+    <style>
+        body {
+            margin: 0px;
+            font-family: "等线", "微软雅黑","黑体";
+            background-color: #fcfcfc;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        h1.header {
+            cursor: default;
+            font-size: 34px;
+            overflow: hidden;
+            padding: 10px;
+            font-weight: 400;
+            color: white;
+            text-align: center;
+        }
+        
+        #header {
+            padding-bottom: 2px;
+            padding-top: 2px;
+            background-color: #3C7BBE;
+        }
+        
+        #container {
+            text-align: center;
+            width: 90%;
+    		margin: 0 auto;
+            margin-top: 15px;
+            margin-bottom: 45px;             
+        }
+        
+        
+        
+        a.alink {            
+            padding-top: 40%;
+            padding-bottom: 40%;
+            text-decoration: none;
+            display: block;      
+            color: #ffffff;            
+            text-align: center;
+            font-size: 24px;            
+            font-weight: 400;            
+            /*background-color: greenyellow;*/
+        }
+        
+        a.alink:hover {
+            
+        }
+        
+        div.vols {
+            float: left; 
+            display: inline-block;
+            width: 17%;            
+            padding: 0px;
+            margin: 2.5%;
+            margin-left:4%;
+            margin-right:4%; 
+            opacity:0.9;
+            overflow:hidden;
+            /*box-shadow: 0px 3px 4px grey;*/
+            border-radius: 8px;
+            background-color: #3C7BBE;
+        }
+        
+        div.vols:hover {
+            box-shadow: 0px 3px 5px grey;
+            /*box-shadow: 0px 10px 10px grey;*/
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1 class="header">藏经下载</h1>
+    </div>
+    <div id="container">
+    <div class="vols" style="display: inline-block;"><a class="alink" href="http://contents.applinzi.com/PLZ/PLZ.html" target="_blank">毗卢藏</a></div><div class="vols" style="display: inline-block;"><a class="alink" href="http://contents.applinzi.com/JXZ/JXZ2.html" target="_blank">嘉兴藏</a></div><div class="vols" style="display: inline-block;"><a class="alink" href="http://contents.applinzi.com/GSZS/Content.html" target="_blank">宫内厅</a></div><div class="vols" style="display: inline-block;"><a class="alink" href="http://contents.applinzi.com/GTFJ/gtfj.html" target="_blank">国图佛经</a></div><div class="vols" style="background-color: rgb(34, 168, 65); display: inline-block;"><a class="alink" href="http://contents.applinzi.com/GTtool/gttool.html" target="_blank">国图工具</a></div><div class="vols" style="background-color: rgb(34, 168, 65); display: inline-block;"><a class="alink" href="http://contents.applinzi.com/GSZS/gntTool.html" target="_blank">宫内厅工具</a></div><div class="vols" style="background-color: rgb(34, 168, 65); display: inline-block;"><a class="alink" href="http://contents.applinzi.com/JXZ/jxztool.html" target="_blank">嘉兴藏工具</a></div><div class="vols" style="background-color: rgb(51, 153, 255); display: inline-block;"><a class="alink" href="http://contents.applinzi.com/instruction.html" target="_blank">下载说明</a></div></div>
+
+
+</body></html>
